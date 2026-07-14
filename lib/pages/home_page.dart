@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:larva_detector_app_v3/components/my_content_box.dart';
 import 'package:larva_detector_app_v3/models/image_model.dart';
 import 'package:larva_detector_app_v3/pages/import_picture_page.dart';
-// import 'package:larva_detector_app/components/my_content_box.dart';
+import 'package:larva_detector_app_v3/pages/live_analysis_page.dart';// import 'package:larva_detector_app/components/my_content_box.dart';
 // import 'package:larva_detector_app/components/my_drawer.dart';
 // import 'package:larva_detector_app/models/image_model.dart';
 // import 'package:larva_detector_app/pages/import_picture_page.dart';
@@ -135,7 +135,30 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 )),
-                const SizedBox(
+                // Add this under your Option 2 in home_page.dart:
+                const SizedBox(height: 25),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const LiveAnalysisPage()
+                      ));
+                    },
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: MyContentBox(
+                        height: 100,
+                        child: Center(
+                          child: Text(
+                            "Connect to Live Stream",
+                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                /*const SizedBox(
                   height: 5,
                 ),
                 GestureDetector(
@@ -171,7 +194,7 @@ class HomePage extends StatelessWidget {
                       ),
                     ]),
                   ),
-                ),
+                ),*/
               ]),
             ),
           ),
