@@ -23,8 +23,8 @@ class _LiveAnalysisPageState extends State<LiveAnalysisPage> {
   @override
   void initState() {
     super.initState();
-    // Fetch a frame every 1 second (adjust based on your server speed)
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+    // Fetch a frame every 4 seconds (adjust based on your server speed)
+    _timer = Timer.periodic(const Duration(seconds: 4), (timer) {
       _fetchLiveFrame();
     });
   }
@@ -49,6 +49,11 @@ class _LiveAnalysisPageState extends State<LiveAnalysisPage> {
         setState(() {
           _currentFrame = const Base64Decoder().convert(response.data['image_base64']);
           _currentData = response.data['result'];
+          bool isCameraLagging = response.data['lagging'] ?? false;
+  
+          if (isCameraLagging) {
+            print("Notice: Displaying cached frame due to camera connection stutter.");
+  }
         });
 
         // Save to Database

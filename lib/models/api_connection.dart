@@ -6,7 +6,7 @@ class ApiConnection {
   // final String? base_url = 'http://10.0.2.2:80';
   // Wi-Fi network
   // adb reverse tcp:5000 tcp:5000
-  final String? base_url = 'http://localhost:5000';
+  final String? base_url = 'http://localhost:80';
 
   getHelloWorld() {
     print('$base_url/hello');
